@@ -31,39 +31,40 @@ class RemindTask extends TimerTask
       {
         if (m.getHealth() != 0)
         {
-          if (this.parent.getCombatLog(p) == 1)
+         /* if (this.parent.getCombatLog(p) == 1)
           {
-            p.sendMessage("§cYou were hit by " + m.getName() + " HP: (" + m.getHealth() + ") for " + thisdmg + " damage! (CurrHP: " + this.parent.getPlayerHP(p) + "/" + this.parent.getMaxBaseHealth(p) + ")");
+            p.sendMessage("§cYou were hit by a " + m.getName() + " HP: (" + m.getHealth() + ") for " + thisdmg + " damage! (CurrHP: " + this.parent.getPlayerHP(p) + ")");
           }
           else if (this.parent.getCombatLog(p) == 2)
           {
             if (this.countcompress1 == 4)
             {
-              p.sendMessage("Total damage recieved " + this.totalmobdmg + ". Current Health: " + this.parent.getPlayerHP(p) + "/" + this.parent.getMaxBaseHealth(p) + ".");
+              p.sendMessage("Total damage recieved " + this.totalmobdmg + ". Current Health: " + this.parent.getPlayerHP(p) + ".");
               this.countcompress1 = 0;
               this.totalmobdmg = 0;
             } else {
               this.countcompress1 += 1;
             }
 
-          }
+          }*/
 
           this.parent.DoPlayerDeath(p);
+   
         }
       }
       else if (m.getHealth() != 0)
       {
-        this.parent.setPlayerHP(p, Integer.valueOf(this.parent.getPlayerHP(p) - thisdmg));
-
+        this.parent.setPlayerHP(p, this.parent.getPlayerHP(p) - thisdmg);
+        this.parent.GiveStat_sta(p);
         if (this.parent.getCombatLog(p) == 1)
         {
-          p.sendMessage("§cYou were hit by " + m.getName() + " HP(" + m.getHealth() + ") for " + thisdmg + " damage! (CurrHP: " + this.parent.getPlayerHP(p) + "/" + this.parent.getMaxBaseHealth(p) + ")");
+          p.sendMessage("§cYou were hit by " + m.getName() + " HP(" + m.getHealth() + ") for " + thisdmg + " damage! (CurrHP: " + this.parent.getPlayerHP(p) + ")");
         }
         else if (this.parent.getCombatLog(p) == 2)
         {
           if (this.countcompress1 == 4)
           {
-            p.sendMessage("Total damage recieved " + this.totalmobdmg + ". Current Health: " + this.parent.getPlayerHP(p) + "/" + this.parent.getMaxBaseHealth(p) + ".");
+            p.sendMessage("Total damage recieved " + this.totalmobdmg + ". Current Health: " + this.parent.getPlayerHP(p) + ".");
             this.countcompress1 = 0;
             this.totalmobdmg = 0;
           } else {
@@ -82,7 +83,7 @@ class RemindTask extends TimerTask
         if (m == null) {
           continue;
         }
-        if (m.getName().equals("Creeper"))
+        if (m.getName() == "Boomer")
         {
           if (this.parent.boomers == false)
           {
@@ -93,21 +94,28 @@ class RemindTask extends TimerTask
             DoMobCombat(m, p, 3);
           }
         }
-        
-        if (m.getName().equals("Spider"))
+        if (m.getName() == "Spider")
         {
           for (Player p : etc.getServer().getPlayerList()) {
             DoMobCombat(m, p, 8);
           }
         }
 
-        if (m.getName().equals("Zombie"))
+        if (m.getName() == "Zombie")
         {
           for (Player p : etc.getServer().getPlayerList()) {
             DoMobCombat(m, p, 4);
           }
         }
-        if (m.getName().equals("Skeleton"))
+
+        if (m.getName() == "Creeper")
+        {
+          for (Player p : etc.getServer().getPlayerList()) {
+            DoMobCombat(m, p, 2);
+          }
+        }
+
+        if (m.getName() != "Skeleton")
           continue;
         for (Player p : etc.getServer().getPlayerList())
           DoMobCombat(m, p, 5);

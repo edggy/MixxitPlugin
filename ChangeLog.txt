@@ -1,5 +1,7 @@
-Version 1.16f
-* Made some fixes to creepers
+Version 1.17
+* edggy's edit
+
+Version 1.16
 * configure setfaction to assign groups
 
 Please add to your groups.txt:

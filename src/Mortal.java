@@ -6,7 +6,7 @@ import java.util.HashMap;
  */
 public class Mortal {
 	private HashMap<Mortal.VarInt, Integer> intField;
-	private static PropertiesFile defaultdata = new PropertiesFile("mixxitDefaults.txt");
+	private static PropertiesFile defaultdata = new PropertiesFile("MixxitDefaults.txt");
 	public String name;
 	
 	public static enum VarInt {
@@ -17,6 +17,7 @@ public class Mortal {
 		FACTION,
 		COMBATLOG,
 		GUILD,
+		DROP,
 		STAT_STR,
 		STAT_AGI,
 		STAT_DEX,
@@ -24,6 +25,7 @@ public class Mortal {
 		STAT_WIS,
 		STAT_CHA,
 		STAT_LCK,
+		STAT_ACC,
 		LASTMOVE
 	}
 
